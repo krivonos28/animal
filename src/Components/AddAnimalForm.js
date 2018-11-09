@@ -15,11 +15,15 @@ postAnimalOnServer(e) {
     console.log(document.querySelector('#age').value)
     console.log(document.querySelector('#input-type').value)
     console.timeEnd('end');
+    var creationDate = new Date();
     axios.post('http://localhost:3012/animals', {
       nickname: (document.querySelector('#nickname').value).toString(),
       price: (document.querySelector('#price').value).toString(),
       age: (document.querySelector('#age').value).toString(),
-      type: (document.querySelector('#input-type').value).toString()
+      type: (document.querySelector('#input-type').value).toString(),
+      creationDate: creationDate,
+      editDate: creationDate
+
     })
       .then((response) => {
         console.log('hey', response);
