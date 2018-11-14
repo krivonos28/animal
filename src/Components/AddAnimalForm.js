@@ -1,12 +1,17 @@
 import React, {Component} from 'react'
-import{Link} from "react-router-dom"
+import{Link, withRouter} from "react-router-dom"
 import axios from 'axios'
+import { connect } from 'react-redux'
 
 class AddAnimalForm extends Component{
 constructor(props){
-    super()
+    super() 
+    this.confirm = false
 
 } 
+componentWillMount(){
+    this.props.onWiiMount()
+}
 postAnimalOnServer(e) {
     console.time( 'srat')
     e.preventDefault()
@@ -14,21 +19,26 @@ postAnimalOnServer(e) {
     console.log(document.querySelector('#price').value)
     console.log(document.querySelector('#age').value)
     console.log(document.querySelector('#input-type').value)
-    console.timeEnd('end');
-    var creationDate = new Date();
+;
+    
     axios.post('http://localhost:3012/animals', {
       nickname: (document.querySelector('#nickname').value).toString(),
       price: (document.querySelector('#price').value).toString(),
       age: (document.querySelector('#age').value).toString(),
       type: (document.querySelector('#input-type').value).toString(),
-      creationDate: creationDate,
-      editDate: creationDate
-
     })
       .then((response) => {
-        console.log('hey', response);
-        this.allAnimals.push(response.data);
-        this.setState({counter: this.state.counter + 1})
+        console.log('hey', response.status);
+       
+        this.props.onAddOneAnimal(response.data)
+        console.log('hey', this.props.animalStore);
+        if (response.status === 200){
+            console.log('response 200')
+            this.confirm = true;
+        }
+        setTimeout(()=>{
+            this.props.history.go(-1)
+        }, 2000)
         })
      
     document.querySelector('#nickname').value = '';
@@ -38,6 +48,15 @@ postAnimalOnServer(e) {
     
   }
 render(){
+
+    // const ConfirmMessage = ()=>{
+    //     return(
+    //         <div>
+    //             Confirm
+    //         </div>
+    //     )
+    // }
+    // var confirmMessage = this.props.addConfimMessage ? <ConfirmMessage/> : ''
     return (
         <div>
     <Link to='/'>Home</Link>
@@ -67,7 +86,8 @@ render(){
                     </select>
                 </div>
             </div>
-            <button type="submit" className="btn btn-primary">Submit</button>
+            <button type="submit" className="btn btn-primary">Submit</button>{this.props.animalStore.addConfimMessage}
+            
         </form>
 
     </div></div>
@@ -75,4 +95,16 @@ render(){
     )
 }
 }
-export default AddAnimalForm;
+export default withRouter(connect(
+    state => ({animalStore: state}),
+    dispatch =>({
+        onAddOneAnimal: (animals)=>{
+            dispatch({type: 'ADD_ONE_ANIMAL', animal: animals})
+            
+            dispatch({type: 'ADD_ANIMAL_GOOD', confirmMessage: "good" })
+            },
+        onWiiMount:()=>{
+            dispatch({type: 'PRESS_ADD', confirmMessage: "press add"})
+        }
+    })
+)(AddAnimalForm));
