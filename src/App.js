@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-//import logo from './logo.svg';
 import './App.css';
 import AddAnimalForm from "./Components/AddAnimalForm"
 import EditForm from './Components/Editform'
-import Home from './Components/Home'
-import AnimalCard from './Components/AnimalCard'
+import { Animals } from './Components/AnimalsList'
+import { Home } from './Components/HomeList'
 import {
   HashRouter,
   Route
@@ -21,10 +20,10 @@ class App extends Component {
     return (<div>
       <HashRouter>
         <div className="main">
-          <Route exact path='/' component={Home}></Route>
-          <Route path='/add' component={AddAnimalForm}></Route>
-          <Route path='/edit' component={EditForm}></Route>
-          <Route  path='/animalcard' component={AnimalCard}></Route>
+          <Route exact path='/' component={ Home }></Route>
+          <Route path='/add' component={ AddAnimalForm }></Route>
+          <Route path='/edit' component={ EditForm }></Route>
+          <Route path='/animalcard' component={ Animals }></Route>
         </div>
       </HashRouter>
       </div>

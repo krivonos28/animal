@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 class AddAnimalForm extends Component{
 constructor(props){
     super() 
-    this.confirm = false
+   // this.confirm = false;
 
 } 
 componentWillMount(){
@@ -28,19 +28,14 @@ postAnimalOnServer(e) {
       type: (document.querySelector('#input-type').value).toString(),
     })
       .then((response) => {
-        console.log('hey', response.status);
-       
-        this.props.onAddOneAnimal(response.data)
-        console.log('hey', this.props.animalStore);
         if (response.status === 200){
-            console.log('response 200')
-            this.confirm = true;
+            this.props.onAddOneAnimal(response.data)
         }
         setTimeout(()=>{
             this.props.history.go(-1)
         }, 2000)
         })
-     
+    
     document.querySelector('#nickname').value = '';
     document.querySelector('#price').value = '';
     document.querySelector('#age').value = '';
@@ -48,19 +43,9 @@ postAnimalOnServer(e) {
     
   }
 render(){
-
-    // const ConfirmMessage = ()=>{
-    //     return(
-    //         <div>
-    //             Confirm
-    //         </div>
-    //     )
-    // }
-    // var confirmMessage = this.props.addConfimMessage ? <ConfirmMessage/> : ''
     return (
         <div>
-    <Link to='/'>Home</Link>
-    
+    <Link to='/'>Home</Link> 
     <div className="container">
         <form onSubmit ={this.postAnimalOnServer.bind(this)}>
             <div className="form-row">
@@ -80,9 +65,9 @@ render(){
                     <label htmlFor="input-type">Breed</label>
                     <select id="input-type" className="form-control">
                        
-                        <option value="tiger">tiger</option>
-                        <option value="panda">panda</option>
-                        <option value="lion">lion</option>
+                        <option value="5bed209ecb2acfe0ac5bc720">tiger</option>
+                        <option value="5bed209ecb2acfe0ac5bc722">panda</option>
+                        <option value="5bed1fbecb2acfe0ac5bc6cc">lion</option>
                     </select>
                 </div>
             </div>
@@ -99,7 +84,7 @@ export default withRouter(connect(
     state => ({animalStore: state}),
     dispatch =>({
         onAddOneAnimal: (animals)=>{
-            dispatch({type: 'ADD_ONE_ANIMAL', animal: animals})
+           // dispatch({type: 'ADD_ONE_ANIMAL', animal: animals})
             
             dispatch({type: 'ADD_ANIMAL_GOOD', confirmMessage: "good" })
             },

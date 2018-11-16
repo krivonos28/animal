@@ -3,28 +3,36 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
+import thunk from 'redux-thunk'
+import { composeWithDevTools } from 'redux-devtools-extension'
 
 const initialState = {
     animals: [],
     idAnimalFroEdit: [],
     addConfimMessage: '',
-    animalForEdit: ''
+    animalForEdit: '',
+    initialized: false,
+    updating: false,
 }
 function animals(state = initialState, action) {
     switch (action.type) {
-        case "ADD_ANIMALS":
-            return {
+        case "UPDATE_ANIMALS": 
+        return {
+            ...state,   
+            updating: true,
+        }
+        case "ADD_ANIMALS_SUCCESS":
+        return {
                 ...state,
-                animals: [...action.animals]
+                animals: [ ...action.animalsForAdd ]
             }
         case "ADD_ONE_ANIMAL":
             return {
                 ...state,
                 animals: [...state.animals, action.animal]
             }
-
         case 'ADD_ID_ANIMALFOREDIT':
             return {
                 ...state,
@@ -52,7 +60,7 @@ function animals(state = initialState, action) {
 
 
 
-const store = createStore(animals, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = createStore(animals, composeWithDevTools(applyMiddleware(thunk)));
 
 
 ReactDOM.render(<Provider store={store}>
