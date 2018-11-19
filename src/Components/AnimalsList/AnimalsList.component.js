@@ -15,7 +15,7 @@ class AnimalCardComponent extends Component {
     render() {
 
         console.log(this.props.animalStore);
-        var animalCard = this.props.animalStore.map((item, i,) => {    
+        var animalCard = this.props.animalStore.animals.map((item, i,) => {    
             return (
                 <tr key={i+1*Math.random()}>
                     <th key={i+1*Math.random()} scope="row">{i+1}</th>

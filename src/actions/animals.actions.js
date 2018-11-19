@@ -5,6 +5,8 @@ class Actions {
     GET_ANIMALS_SUCCESS = "GET_ANIMALS_SUCCESS";
     UPDATE_ANIMALS_REQUEST = "UPDATE_ANIMALS_REQUEST";
     UPDATE_ANIMALS_SUCCESS = "UPDATE_ANIMALS_SUCCESS";
+    ADD_ANIMALS_SUCCESS = "ADD_ANIMALS_SUCCESS";
+
 
     getAnimalsRequest = () => ({
         type: this.GET_ANIMALS_REQUEST,
@@ -14,14 +16,21 @@ class Actions {
         type: this.GET_ANIMALS_SUCCESS,
         animalsForAdd: animals
     })
+    
+    addAnimalsSaccess = (animals) =>({
+        type: this.ADD_ANIMALS_SUCCESS,
+        payload: animals
+    })
 
 
 
     loadAnimals = () =>  async (dispatch) => {
-        console.log(11111);
+      
         dispatch(this.getAnimalsRequest());
-        const animals = this.loadAminalsApi();
+        const animals = await this.loadAnimalsApi();
         dispatch(this.getAnimalsSuccess(animals));
+        console.log(animals)
+        dispatch(this.addAnimalsSaccess(animals))
     }
 
     loadAnimalsApi = async () => {
@@ -32,10 +41,11 @@ class Actions {
             cache: 'no-cache'
         })
             .then((response) => {
+                return response.data
                 //debugger
-                let animals = response.data
-                this.props.onAddAnimal(animals)
-                console.log(this.props.animalStore)
+                // let animals = response.data
+                // this.props.onAddAnimal(animals)
+                // console.log(this.props.animalStore)
             })
     }
 

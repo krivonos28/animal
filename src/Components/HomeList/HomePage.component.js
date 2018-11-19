@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Animals } from '../AnimalsList'
 import axios from 'axios'
+import { Join } from '../JoinList'
 import { Link } from 'react-router-dom'
 
 class HomePageComponent extends Component {
@@ -13,7 +14,8 @@ class HomePageComponent extends Component {
         }
     }
     componentWillMount() {
-        console.log(this.props.animallStore);
+        console.log(this.props);
+      //  this.props.getAnimalsApiRequest();
         const { getAllAnimals } = this.props;
         getAllAnimals();
     }
@@ -35,11 +37,22 @@ class HomePageComponent extends Component {
     }
 
     render() {
-        const { getAllAnimals, animalStore } = this.props;
-        console.log(animalStore)
-        if (!animalStore.initialized || animalStore.updating ) {
-            return (<div> LOADING... </div>)
-        } 
+        // console.log(this.props)
+         const { getAllAnimals, animalStore } = this.props.animalStore.animals;
+        // console.log(animalStore)
+        // console.log(this.props.animalStore.join.signIn)
+        // if (!this.props.animalStore.animals.initialized || this.props.animalStore.animals.updating ) {
+        //     return (<div> 
+        //         <Join></Join> 
+        //         </div>)
+        // } 
+        console.log(this.props.animalStore.join.signIn)
+        if (!this.props.animalStore.join.signIn){
+            console.log('false')
+            return (<div> 
+                        <Join></Join> 
+                    </div>)
+        }
         return (
             <div>
                 <div className="container">
