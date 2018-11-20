@@ -25,15 +25,15 @@ class Actions {
 
 
     loadAnimals = () =>  async (dispatch) => {
-      
         dispatch(this.getAnimalsRequest());
         const animals = await this.loadAnimalsApi();
         dispatch(this.getAnimalsSuccess(animals));
-        console.log(animals)
-        dispatch(this.addAnimalsSaccess(animals))
+        console.log(animals);
+        dispatch(this.addAnimalsSaccess(animals));
     }
 
     loadAnimalsApi = async () => {
+
         return axios.get('http://localhost:3012/animals', {
             mode: 'cors',  //tried both with and without
             method: 'GET',
@@ -42,13 +42,25 @@ class Actions {
         })
             .then((response) => {
                 return response.data
-                //debugger
-                // let animals = response.data
-                // this.props.onAddAnimal(animals)
-                // console.log(this.props.animalStore)
+
             })
     }
 
+    editAnimal(e){
+        const id = e.currentTarget.dataset.id;
+        console.log(id);
+        this.props.onEditAnimal(id);
+        this.props.history.push(`/edit/${id}`);
+    }
+
+    deleteAnimal = (e) => {
+        console.log(e.currentTarget.dataset.id)
+        axios.delete(`http://localhost:3012/animals/${e.currentTarget.dataset.id}`)
+            .then((response) => {
+                return response
+            })
+            .then(this.loadAnimals())
+    }
 }
 
 export const AnimalsActions = new Actions();

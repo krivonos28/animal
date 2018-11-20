@@ -5,12 +5,7 @@ class AnimalCardComponent extends Component {
         super()
     }
 
-    editAnimal(e){
-        const id = e.currentTarget.dataset.id;
-        console.log(id);
-        this.props.onEditAnimal(id);
-        this.props.history.push(`/edit/${id}`);
-    }
+
 
     render() {
 
@@ -24,8 +19,8 @@ class AnimalCardComponent extends Component {
                     <td key={i+1*Math.random()} className ="age">{item.age}</td>
                     <td key={i+1*Math.random()} className ="price">{item.price}</td>
                     <td key={i+1*Math.random()}>
-                        <button key={i+1*Math.random()} data-id={item._id} onClick={this.props.deleteAnimal.bind(this)}>X</button>
-                        <button key={i+1*Math.random()} data-id={item._id} onClick={this.editAnimal.bind(this)} >Edit</button>
+                        <button key={i+1*Math.random()} data-id={item._id} onClick={this.props.deleteAnimals}>X</button>
+                        <button key={i+1*Math.random()} data-id={item._id} onClick={this.props.editAnimal} >Edit</button>
                     </td>
                 </tr> 
             )

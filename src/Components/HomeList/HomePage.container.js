@@ -11,7 +11,8 @@ const mapDispatchToProps = dispatch => ({
         dispatch({type: 'ADD_ID_ANIMALFOREDIT', idForEdit: animalId});
     },
     getAllAnimals: () => dispatch(AnimalsActions.loadAnimals()),
-    getAnimalsApiRequest: ()=> AnimalsActions.loadAnimalsApi()
+    getAnimalsApiRequest: () => AnimalsActions.loadAnimalsApi(),
+   
 });
 
 export const Home = withRouter(

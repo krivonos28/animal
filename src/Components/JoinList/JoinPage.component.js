@@ -8,7 +8,7 @@ class JoinPageComponent extends Component{
         console.log(this.props)
         return(
             <div>
-                Hellos
+                Hello
                 <button onClick={this.props.onJoin}>join</button>
             </div>
         )

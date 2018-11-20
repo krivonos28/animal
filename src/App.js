@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import AddAnimalForm from "./Components/AddAnimalForm"
+import { AddAnimal } from '../src/Components/AddAnimalsList'
 import EditForm from './Components/Editform'
 import { Animals } from './Components/AnimalsList'
 import { Home } from './Components/HomeList'
@@ -12,7 +12,7 @@ import { connect } from 'react-redux'
 
 
 class App extends Component {
-  constructor(props){
+  constructor(props)  {
     super()
   }
 
@@ -21,7 +21,7 @@ class App extends Component {
       <HashRouter>
         <div className="main">
           <Route exact path='/' component={ Home }></Route>
-          <Route path='/add' component={ AddAnimalForm }></Route>
+          <Route path='/add' component={ AddAnimal }></Route>
           <Route path='/edit' component={ EditForm }></Route>
           <Route path='/animalcard' component={ Animals }></Route>
         </div>

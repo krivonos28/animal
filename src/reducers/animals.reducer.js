@@ -17,7 +17,7 @@ export default function animals(state = initialState, action) {
         case "ADD_ANIMALS_SUCCESS":
         return {
                 ...state,
-                animals: [ ...action.payload ]
+                animals: [...action.payload]
             }
         case "ADD_ONE_ANIMAL":
             return {
@@ -44,7 +44,6 @@ export default function animals(state = initialState, action) {
                 ...state,
                 addConfimMessage: action.confirmMessage
             }
-        default: console.log('no action')
+        default: return state;
     }
-    return initialState;
 }
