@@ -19,8 +19,8 @@ class AnimalCardComponent extends Component {
                     <td key={i+1*Math.random()} className ="age">{item.age}</td>
                     <td key={i+1*Math.random()} className ="price">{item.price}</td>
                     <td key={i+1*Math.random()}>
-                        <button key={i+1*Math.random()} data-id={item._id} onClick={this.props.deleteAnimals}>X</button>
-                        <button key={i+1*Math.random()} data-id={item._id} onClick={this.props.editAnimal} >Edit</button>
+                        <button key={i+1*Math.random()} data-id={item._id} onClick={this.props.deleteAnimal}>X</button>
+                        <button key={i+1*Math.random()} data-id={item._id} onClick={this.props.onEditAnimal} >Edit</button>
                     </td>
                 </tr> 
             )

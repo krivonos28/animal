@@ -16,7 +16,7 @@ class HomePageComponent extends Component {
     }
 
     render() {
-        const { getAllAnimals, animalStore } = this.props.animalStore.animals;
+        const { getAllAnimals } = this.props.animalStore.animals;
         console.log(this.props.animalStore.join.signIn)
         if (!this.props.animalStore.join.signIn) {
             console.log('false')

@@ -10,14 +10,14 @@ class Actions {
             console.log(document.querySelector('#age').value);
             console.log(document.querySelector('#input-type').value);
             axios.post('http://localhost:3012/animals', {
-              nickname: (document.querySelector('#nickname').value).toString(),
-              price: (document.querySelector('#price').value).toString(),
-              age: (document.querySelector('#age').value).toString(),
-              type: (document.querySelector('#input-type').value).toString(),
+                nickname: (document.querySelector('#nickname').value).toString(),
+                price: (document.querySelector('#price').value).toString(),
+                age: (document.querySelector('#age').value).toString(),
+                type: (document.querySelector('#input-type').value).toString(),
             })
               .then((response) => {
-                setTimeout(()=>{
-                   document.location.reload('http://localhost:3000/#/')
+                setTimeout(() =>{
+                   window.location.href = 'http://localhost:3000/#/'
                 }, 2000)
                 })
             

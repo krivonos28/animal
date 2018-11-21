@@ -24,11 +24,7 @@ export default function animals(state = initialState, action) {
                 ...state,
                 animals: [...state.animals, action.animal]
             }
-        case 'ADD_ID_ANIMALFOREDIT':
-            return {
-                ...state,
-                idAnimalForEdit: action.idForEdit
-            }
+      
         case 'ADD_ANIMAL_FOR_EDIT':
             return {
                 ...state,

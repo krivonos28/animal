@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import { AddAnimal } from '../src/Components/AddAnimalsList'
-import EditForm from './Components/Editform'
 import { Animals } from './Components/AnimalsList'
 import { Home } from './Components/HomeList'
 import {
@@ -9,6 +8,7 @@ import {
   Route
 } from "react-router-dom"
 import { connect } from 'react-redux'
+import { EditAnimal} from './Components/EditList'
 
 
 class App extends Component {
@@ -22,7 +22,7 @@ class App extends Component {
         <div className="main">
           <Route exact path='/' component={ Home }></Route>
           <Route path='/add' component={ AddAnimal }></Route>
-          <Route path='/edit' component={ EditForm }></Route>
+          <Route path='/edit' component={ EditAnimal }></Route>
           <Route path='/animalcard' component={ Animals }></Route>
         </div>
       </HashRouter>
