@@ -9,7 +9,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    getOneAnimal: (id) => dispatch(editAnimalAction.getAnimal(id))
+    getOneAnimal: (id) => dispatch(editAnimalAction.getAnimal(id)),
+    onAddCorrectedAnimal: (e, name, age, price, type, id) => dispatch(editAnimalAction.addCorrectedAnimal(e, name, age, price, type,id))
 })
 export const EditAnimal = withRouter(
     connect(mapStateToProps, mapDispatchToProps)(EditAnimalCard)

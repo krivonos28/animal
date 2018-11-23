@@ -1,6 +1,7 @@
 import { EditAnimalComponent } from '../Components/EditList'
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Spinner from '../Components/spinner';
 
 class EditAnimalList extends Component {
     componentWillMount(){
@@ -12,10 +13,16 @@ class EditAnimalList extends Component {
         
     }
     render() {
+        const spinnerLounch = this.props.animalStore.editAnimal.spinner
+        const element = <div><Link to='/'>Home</Link>
+                            <EditAnimalComponent animalForEdit = {this.props}></EditAnimalComponent>
+                            </div>
+        const spinner = <div><Spinner></Spinner></div>
+        const content = (spinnerLounch ? spinner : element)
         return (
             <div>
-                <Link to='/'>Home</Link>
-                <EditAnimalComponent></EditAnimalComponent>
+                
+                {content}
             </div>
         )
     }

@@ -5,6 +5,7 @@ const initialState = {
     animalForEdit: '',
     initialized: false,
     updating: false,
+    modalDel: false
 }
 
 export default function animals(state = initialState, action) {
@@ -40,6 +41,16 @@ export default function animals(state = initialState, action) {
                 ...state,
                 addConfimMessage: action.confirmMessage
             }
+        case "SHOW_MODAL_DELETE_REQUEST":
+            return {
+                ...state,
+                modalDel: true
+            }
+        case "HIDE_MODAL_DELETE_REQUEST":
+        return {
+            ...state,
+            modalDel: false
+        }
         default: return state;
     }
 }

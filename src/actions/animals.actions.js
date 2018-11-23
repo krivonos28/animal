@@ -8,6 +8,11 @@ class Actions {
     UPDATE_ANIMALS_SUCCESS = "UPDATE_ANIMALS_SUCCESS";
     ADD_ANIMALS_SUCCESS = "ADD_ANIMALS_SUCCESS";
     DELETE_ANIMAL_SUCCESS ="DELETE_ANIMAL_SUCCESS";
+    SHOW_MODAL_DELETE_REQUEST = "SHOW_MODAL_DELETE_REQUEST" 
+    SHOW_MODAL_DELETE_SUCCESS = "SHOW_MODAL_DELETE_SUCCESS" 
+    HIDE_MODAL_DELETE_REQUEST = "HIDE_MODAL_DELETE_REQUEST"
+    HIDE_MODAL_DELETE_SUCCESS = "HIDE_MODAL_DELETE_SUCCESS"
+
 
 
     getAnimalsRequest = () => ({
@@ -31,6 +36,27 @@ class Actions {
     deleteAnimalSuccess = () =>({
         type: this.DELETE_ANIMAL_SUCCESS
     })
+
+    showModalDeleteRequest = () =>({
+        type: this.SHOW_MODAL_DELETE_REQUEST
+    })
+    showModalDeleteSuccess = () => ({
+        type: this.SHOW_MODAL_DELETE_SUCCESS
+    })
+
+    showModalDelete = () => (dispatch) =>{
+        dispatch(this.showModalDeleteRequest());
+        console.log('showmodal');
+    }
+
+    hideModalDeleteRequest = () =>({
+        type: this.HIDE_MODAL_DELETE_REQUEST
+    }) 
+    hideModalDelete = () => (dispatch) => {
+        dispatch(this.hideModalDeleteRequest());
+        console.log('hide modal')
+        //dispatch(this.showModalDeleteSuccess())
+    }
 
 
     loadAnimals = () =>  async (dispatch) => {

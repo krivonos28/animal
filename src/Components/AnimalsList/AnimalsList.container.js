@@ -14,6 +14,12 @@ const mapDispatchToProps = (dispatch) =>({
     },
     deleteAnimal: (e) => {
         dispatch(AnimalsActions.deleteAnimal(e.currentTarget.dataset.id));
+    },
+    onShowModalDelete: () => {
+        dispatch(AnimalsActions.showModalDelete())
+    },
+    onHideModalDelete: () => {
+        dispatch(AnimalsActions.hideModalDelete())
     }
 });
 
