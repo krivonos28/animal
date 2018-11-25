@@ -15,12 +15,10 @@ const mapDispatchToProps = (dispatch) =>({
     deleteAnimal: (e) => {
         dispatch(AnimalsActions.deleteAnimal(e.currentTarget.dataset.id));
     },
-    onShowModalDelete: () => {
-        dispatch(AnimalsActions.showModalDelete())
+    onShowModalDelete: (e) => {
+        dispatch(AnimalsActions.showModalDelete(e.currentTarget.dataset.id))
     },
-    onHideModalDelete: () => {
-        dispatch(AnimalsActions.hideModalDelete())
-    }
+  
 });
 
 export const Animals = withRouter(

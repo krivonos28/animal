@@ -12,6 +12,12 @@ const mapDispatchToProps = dispatch => ({
     },
     getAllAnimals: () => dispatch(AnimalsActions.loadAnimals()),
     getAnimalsApiRequest: () => AnimalsActions.loadAnimalsApi(),
+    onHideModalDelete: () => {
+        dispatch(AnimalsActions.hideModalDelete())
+    },
+    deleteAnimal: (e) => {
+        dispatch(AnimalsActions.deleteAnimal(e.currentTarget.dataset.id));
+    },
    
 });
 

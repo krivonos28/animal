@@ -44,9 +44,9 @@ class Actions {
         type: this.SHOW_MODAL_DELETE_SUCCESS
     })
 
-    showModalDelete = () => (dispatch) =>{
+    showModalDelete = (e) => (dispatch) =>{
         dispatch(this.showModalDeleteRequest());
-        console.log('showmodal');
+        console.log('showmodal', e);
     }
 
     hideModalDeleteRequest = () =>({
@@ -69,6 +69,7 @@ class Actions {
 
   
     deleteAnimal = (id) => async (dispatch) => {
+        console.log("delete animal")
         dispatch(this.changeAnimalsRequest());
         const res = await ApiService.deleteAnimal(id);
         dispatch(this.deleteAnimalSuccess(res))

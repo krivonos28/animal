@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ModalWindowOnDelete from '../Components/ModalWindowOnDelete/ModalWindowOnDelete'
+
 
 class AnimalCardComponent extends Component {
     constructor(props) {
@@ -17,9 +17,8 @@ class AnimalCardComponent extends Component {
                     <td key={i + 1 * Math.random()} className="age">{item.age}</td>
                     <td key={i + 1 * Math.random()} className="price">{item.price}</td>
                     <td key={i + 1 * Math.random()}>
-                        <div className="container" id="container">
-                            <ModalWindowOnDelete id={item._id} animalstore={this.props}></ModalWindowOnDelete></div>
-                        <button key={i + 1 * Math.random()} data-id={item._id} onClick={this.props.deleteAnimal}>X</button>
+                        
+                        <button key={i + 1 * Math.random()} data-id={item._id} onClick={this.props.onShowModalDelete}>X</button>
                         <button key={i + 1 * Math.random()} data-id={item._id} onClick={this.props.onEditAnimal} >Edit</button>
                     </td>
                 </tr>

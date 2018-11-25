@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import { Animals } from '../AnimalsList'
 import { Join } from '../JoinList'
 import { Link } from 'react-router-dom'
-import { AddAnimal} from '../AddAnimalsList'
-import Modal from 'react-bootstrap/lib/Modal'
-import Button from 'react-bootstrap/lib/Button'
-import ModalWindowOnDelete from '../Components/ModalWindowOnDelete/ModalWindowOnDelete'
+import { ModalWindowOnDelete } from '../Components/ModalWindowOnDelete/ModalWindowOnDelete'
 
 class HomePageComponent extends Component {
     constructor(props) {
@@ -27,10 +24,13 @@ class HomePageComponent extends Component {
                 <Join></Join>
             </div>)
         }
-        debugger
+        
+        // console.log(this.props)
+        const { modalDel } = this.props.animalStore.animals;
+        const modalDelete = modalDel ? <ModalWindowOnDelete store = {this.props} /> : null
         return (
             <div>
-  
+                {modalDelete}
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-12">
@@ -47,10 +47,8 @@ class HomePageComponent extends Component {
                         <Link to="add"><div className="col-2"><button type="button" className="btn btn-outline-success" >Add</button></div></Link>
                     </div>
                 </div>
-                <div className="container">
-
+                    <div className="container">
                     <Animals allAnimals={this.allAnimals} deleteAnimal={this.deleteAnimal}></Animals>
-
                 </div>
                 {/* <div className="container" id="container">
                             <ModalWindowOnDelete  animalstore={this.props}></ModalWindowOnDelete></div> */}
