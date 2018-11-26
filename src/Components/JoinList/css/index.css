@@ -1,0 +1,9 @@
+.joincomponent{
+    height: 400px;
+    width: 700px;
+    margin: auto;
+    margin-top: 50px;
+    padding: 10px;
+    border: solid grey 1px;
+    border-radius: 4px;
+}

@@ -50,8 +50,6 @@ class HomePageComponent extends Component {
                     <div className="container">
                     <Animals allAnimals={this.allAnimals} deleteAnimal={this.deleteAnimal}></Animals>
                 </div>
-                {/* <div className="container" id="container">
-                            <ModalWindowOnDelete  animalstore={this.props}></ModalWindowOnDelete></div> */}
             </div>
 
         );

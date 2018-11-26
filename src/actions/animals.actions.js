@@ -13,8 +13,6 @@ class Actions {
     HIDE_MODAL_DELETE_REQUEST = "HIDE_MODAL_DELETE_REQUEST"
     HIDE_MODAL_DELETE_SUCCESS = "HIDE_MODAL_DELETE_SUCCESS"
 
-
-
     getAnimalsRequest = () => ({
         type: this.GET_ANIMALS_REQUEST,
     })
@@ -33,49 +31,13 @@ class Actions {
         payload: animals
     })
 
-    deleteAnimalSuccess = () =>({
-        type: this.DELETE_ANIMAL_SUCCESS
-    })
-
-    showModalDeleteRequest = () =>({
-        type: this.SHOW_MODAL_DELETE_REQUEST
-    })
-    showModalDeleteSuccess = () => ({
-        type: this.SHOW_MODAL_DELETE_SUCCESS
-    })
-
-    showModalDelete = (e) => (dispatch) =>{
-        dispatch(this.showModalDeleteRequest());
-        console.log('showmodal', e);
-    }
-
-    hideModalDeleteRequest = () =>({
-        type: this.HIDE_MODAL_DELETE_REQUEST
-    }) 
-    hideModalDelete = () => (dispatch) => {
-        dispatch(this.hideModalDeleteRequest());
-        console.log('hide modal')
-        //dispatch(this.showModalDeleteSuccess())
-    }
-
-
-    loadAnimals = () =>  async (dispatch) => {
+     loadAnimals = () =>  async (dispatch) => {
         dispatch(this.getAnimalsRequest());
         const animals = await ApiService.getAllAnimals();
         dispatch(this.getAnimalsSuccess(animals));
         console.log(animals);
         dispatch(this.addAnimalsSaccess(animals));
     }
-
-  
-    deleteAnimal = (id) => async (dispatch) => {
-        console.log("delete animal")
-        dispatch(this.changeAnimalsRequest());
-        const res = await ApiService.deleteAnimal(id);
-        dispatch(this.deleteAnimalSuccess(res))
-        dispatch(this.loadAnimals());
-       
-        }   
     }
            
 

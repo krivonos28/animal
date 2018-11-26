@@ -10,7 +10,14 @@ const mapDispatchToProps = (dispatch) => ({
     onJoin: () => {
         console.log("action onJoin")
         dispatch (JoinActions.signIn())
+    },
+    onTurnonSignIn: () =>{
+        dispatch(JoinActions.turnonSignIn())
+    },
+    onTurnonSignUp: () =>{
+        dispatch(JoinActions.turnonSignUp())
     }
+    
 })
 
 export const Join = withRouter(

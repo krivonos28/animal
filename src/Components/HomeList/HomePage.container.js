@@ -2,6 +2,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { HomePage } from './HomePage.component';
 import { AnimalsActions } from '../../actions/animals.actions';
+import { deleteAnimal } from '../../actions/deleteAnimal'
 
 const mapStateToProps = (state) => ({
     animalStore: state,
@@ -13,10 +14,10 @@ const mapDispatchToProps = dispatch => ({
     getAllAnimals: () => dispatch(AnimalsActions.loadAnimals()),
     getAnimalsApiRequest: () => AnimalsActions.loadAnimalsApi(),
     onHideModalDelete: () => {
-        dispatch(AnimalsActions.hideModalDelete())
+        dispatch(deleteAnimal.hideModalDelete())
     },
-    deleteAnimal: (e) => {
-        dispatch(AnimalsActions.deleteAnimal(e.currentTarget.dataset.id));
+    deleteAnimal: (id) => {
+        dispatch(deleteAnimal.deleteAnimal(id));
     },
    
 });
