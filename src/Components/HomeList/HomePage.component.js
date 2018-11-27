@@ -10,22 +10,17 @@ class HomePageComponent extends Component {
 
     }
     componentWillMount() {
-        console.log(this.props);
         const { getAllAnimals } = this.props;
         getAllAnimals();
     }
 
     render() {
         const { getAllAnimals } = this.props.animalStore.animals;
-        console.log(this.props.animalStore.join.signIn)
         if (!this.props.animalStore.join.signIn) {
-            console.log('false')
             return (<div>
                 <Join></Join>
             </div>)
         }
-        
-        // console.log(this.props)
         const { modalDel } = this.props.animalStore.animals;
         const modalDelete = modalDel ? <ModalWindowOnDelete store = {this.props} /> : null
         return (

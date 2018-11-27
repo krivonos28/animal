@@ -12,6 +12,15 @@ class ServiceAPI {
             .then((response) => {
                 return response.data;
             })
+    }  
+    
+    postAnimal = (nickname, price, age, type) =>{
+        return axios.post('http://localhost:3012/animals', {
+        nickname: nickname,
+        price: price,
+        age: age,
+        type: type,
+        })
     }
 
     deleteAnimal = (id) => {

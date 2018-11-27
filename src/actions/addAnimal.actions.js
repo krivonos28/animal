@@ -1,24 +1,19 @@
 import axios from 'axios'
+import ApiService from "../serviceAPI/ServiceAPI"
     
 
 class Actions {
     postAnimalOnServer(e) {
-
-            e.preventDefault();
-            console.log(document.querySelector('#nickname').value);
-            console.log(document.querySelector('#price').value);
-            console.log(document.querySelector('#age').value);
-            console.log(document.querySelector('#input-type').value);
-            axios.post('http://localhost:3012/animals', {
-                nickname: (document.querySelector('#nickname').value).toString(),
-                price: (document.querySelector('#price').value).toString(),
-                age: (document.querySelector('#age').value).toString(),
-                type: (document.querySelector('#input-type').value).toString(),
-            })
+                const nickname = (document.querySelector('#nickname').value).toString();
+                const price = (document.querySelector('#price').value).toString();
+                const age = (document.querySelector('#age').value).toString();
+                const type = (document.querySelector('#input-type').value).toString();
+            
+            ApiService.postAnimal(nickname, price, age, type)
               .then((response) => {
                 setTimeout(() =>{
                    window.location.href = 'http://localhost:3000/#/'
-                }, 2000)
+                }, 1000)
                 })
             
             document.querySelector('#nickname').value = '';

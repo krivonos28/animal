@@ -6,8 +6,6 @@ class AnimalCardComponent extends Component {
         super()
     }
     render() {
-        console.log(this.props.animalStore);
-        console.log(this.props);
         var animalCard = this.props.animalStore.animals.map((item, i, ) => {
             return (
                 <tr key={i + 1 * Math.random()}>

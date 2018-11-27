@@ -5,10 +5,8 @@ import Spinner from '../Components/spinner';
 
 class EditAnimalList extends Component {
     componentWillMount(){
-        console.log(this.props);
         const { getOneAnimal } = this.props;
         const id = this.props.animalStore.editAnimal.idAnimalForEdit;
-        console.log('----------------', id)
         getOneAnimal(id);
         
     }
