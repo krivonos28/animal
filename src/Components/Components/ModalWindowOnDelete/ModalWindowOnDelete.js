@@ -10,7 +10,7 @@ export class ModalWindowOnDelete extends React.Component {
                     <ModalHeader toggle={this.props.store.onHideModalDelete}>Do you really want to remove this animal</ModalHeader>
                     <ModalBody>
                         NickName : {this.props.store.animalStore.deleteAnimal.animalForDelete[0].nickname} <br></br>
-                        Type : {this.props.store.animalStore.deleteAnimal.animalForDelete[0].typesName[0].typeName}<br></br>
+                        Type : {this.props.store.animalStore.deleteAnimal.animalForDelete[0].typesName.typeName}<br></br>
                         Price : {this.props.store.animalStore.deleteAnimal.animalForDelete[0].price} $<br></br>
                         Age : {this.props.store.animalStore.deleteAnimal.animalForDelete[0].age}<br></br>
                     </ModalBody>

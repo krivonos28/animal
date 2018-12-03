@@ -8,8 +8,7 @@ class Actions {
     ADD_ANIMAL_FOR_EDIT_REQUEST = "ADD_ANIMAL_FOR_EDIT_REQUEST";
     ADD_ANIMAL_FOR_EDIT = "ADD_ANIMAL_FOR_EDIT";
     ADD_ANIMAL_FOR_EDIT_SUCCESS = "ADD_ANIMAL_FOR_EDIT_SUCCESS";
-    ADD_CORRECTED_ANIMAL_REQUEST = "ADD_CORRECTED_ANIMAL_REQUEST";
-    //ADD_CORRECTED_ANIMAL = "ADD_CORRECTED_ANIMAL";    
+    ADD_CORRECTED_ANIMAL_REQUEST = "ADD_CORRECTED_ANIMAL_REQUEST"; 
     ADD_CORRECTED_ANIMAL_SUCCESS = "ADD_CORRECTED_ANIMAL_SUCCESS";
 
 
@@ -46,12 +45,13 @@ class Actions {
     })
 
 
-    addCorrectedAnimal =(e, name, age, price, type, id) => async (dispatch)=> {
+    addCorrectedAnimal =(e, name, age, price, type, _id) => async (dispatch)=> {
         e.preventDefault();
-        dispatch(this.addCorrectedAnimalRequest())
-        console.log('add corrected aminal', name, age, price, type, id)
-        const response = await ApiService.editAnimal(name, age, price, type, id)
-        dispatch(this.addCorrectedAnimalSuccess())
+        dispatch(this.addCorrectedAnimalRequest());
+        await ApiService.editAnimal(name, age, price, type, _id);
+        dispatch(this.addCorrectedAnimalSuccess());
+        window.location.href = `http://localhost:3000/#/`;
+
 }
 
 
@@ -59,24 +59,21 @@ class Actions {
 
     editAnimal = (id) => (dispatch) => {
         console.log(id);
-        dispatch(this.editAnimalRedirectRequest())
+        dispatch(this.editAnimalRedirectRequest());
         window.location.href = `http://localhost:3000/#/edit/${id}`
-        dispatch(this.editAnimalRedirectSuccess())
-        dispatch(this.addIdAnimalForEdit(id))
+        dispatch(this.editAnimalRedirectSuccess());
+        dispatch(this.addIdAnimalForEdit(id));
         
     }
     addAnimalForEditInStore = (response) => (dispatch) =>{
-        console.log('hey')
+        console.log('hey');
     }
     getAnimal = (id) => async (dispatch) => {
-        console.log('get animal',id)
+        console.log('get animal',id);
         dispatch(this.getAnimalRequest());//lounch spinner
-  
         const response = await ApiService.getAnimal(id);
-        console.log('--------------------', response)
-      
-        dispatch(this.addAnimalForEdit(response[0]))
-        dispatch(this.getAnimalSuccess())//stop spinner
+        dispatch(this.addAnimalForEdit(response[0]));
+        dispatch(this.getAnimalSuccess());//stop spinner
     }
 
 }

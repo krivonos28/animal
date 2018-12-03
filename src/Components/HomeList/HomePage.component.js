@@ -15,7 +15,7 @@ class HomePageComponent extends Component {
     }
 
     render() {
-        const { getAllAnimals } = this.props.animalStore.animals;
+        //const { getAllAnimals } = this.props.animalStore.animals;
         if (!this.props.animalStore.join.signIn) {
             return (<div>
                 <Join></Join>
@@ -34,12 +34,15 @@ class HomePageComponent extends Component {
                     </div>
                 </div>
                 <div className="container">
-                    <div className="row addAnimal justify-content-between">
-                        <div className="col-8 col-md-4">
-                            add animal
-                         </div>
-                        <div className="col-2"><button type="button" className="btn btn-outline-success" onClick={getAllAnimals}>Show animals</button></div>
-                        <Link to="add"><div className="col-2"><button type="button" className="btn btn-outline-success" >Add</button></div></Link>
+                    <div className="row addAnimal justify-content-end">
+                        
+                      
+                        <Link to="add">
+                            <div className="col-2">
+                              <button type="button" className="btn btn-outline-success" >Add</button>
+                            </div>
+                        </Link>
+                    
                     </div>
                 </div>
                     <div className="container">

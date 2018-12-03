@@ -10,6 +10,7 @@ class EditAnimal extends Component {
         //debugger
         const  animalForEdit  = this.props.animalForEdit.animalStore.editAnimal.animalForEdit;
         const id =this.props.animalForEdit.animalStore.editAnimal.idAnimalForEdit
+        console.log("-------------", this.props)
         
         
         return (
@@ -58,7 +59,10 @@ class EditAnimal extends Component {
                                 this.inputPrice.value,
                                 this.selectType.value,
                                 id 
-                            )}}>Submit</button>{}
+                            )
+                            
+                            
+                            }}>Submit</button>{}
                     </form>
                 </div>
             </div>

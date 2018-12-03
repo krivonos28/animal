@@ -1,5 +1,5 @@
-import axios from 'axios'
-import ApiService from "../serviceAPI/ServiceAPI"
+
+import { ApiService } from "../serviceAPI/ServiceAPI"
     
 
 class Actions {
@@ -11,11 +11,8 @@ class Actions {
             
             ApiService.postAnimal(nickname, price, age, type)
               .then((response) => {
-                setTimeout(() =>{
-                   window.location.href = 'http://localhost:3000/#/'
-                }, 1000)
+                window.location.href = `http://localhost:3000/#/`
                 })
-            
             document.querySelector('#nickname').value = '';
             document.querySelector('#price').value = '';
             document.querySelector('#age').value = '';

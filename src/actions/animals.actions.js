@@ -35,7 +35,6 @@ class Actions {
         dispatch(this.getAnimalsRequest());
         const animals = await ApiService.getAllAnimals();
         dispatch(this.getAnimalsSuccess(animals));
-        console.log(animals);
         dispatch(this.addAnimalsSaccess(animals));
     }
     }

@@ -24,7 +24,6 @@ class Actions {
 
     showModalDelete = (id) => (dispatch) =>{
         dispatch(this.showModalDeleteRequest());
-        console.log('showmodal', id);
         dispatch(this.showModalDeleteSuccess());
        
     }
@@ -40,11 +39,10 @@ class Actions {
         dispatch(this.addAnimalForDeleteInStoreRequest());
         const response = await this.getAnimal(id);
         dispatch(this.addAnimalForDeleteInStoreSuccess(response));
-        dispatch(this.showModalDelete());
+        dispatch(this.showModalDelete(id));
     }
 
     getAnimal =  async (id) => {
-        console.log('get animal',id)
         const response = await ApiService.getAnimal(id);
         return response
     }
@@ -55,14 +53,11 @@ class Actions {
     
     hideModalDelete = () => (dispatch) => {
         dispatch(this.hideModalDeleteRequest());
-        console.log('hide modal')
-        //dispatch(this.showModalDeleteSuccess())
+     
     }
 
     deleteAnimal = (id) => async (dispatch) => {
-        console.log("delete animal", id)
-        const res = await ApiService.deleteAnimal(id);
-        console.log(res)
+        await ApiService.deleteAnimal(id);
         dispatch(this.hideModalDelete());
         dispatch(this.deleteAnimalSuccess());
         dispatch(AnimalsActions.loadAnimals())

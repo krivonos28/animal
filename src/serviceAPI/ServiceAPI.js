@@ -21,16 +21,22 @@ class ServiceAPI {
         age: age,
         type: type,
         })
+        .then ((response) => {
+            console.log ('service api ================', response);
+            return response;
+        }
+        );
     }
 
     deleteAnimal = (id) => {
-        return axios.delete(`http://localhost:3012/animals/${id}`)
+        return axios.delete(`http://localhost:3012/animals/${id}`, {
+            _id: id
+        })
             .then((response) => {
                 console.log(response)
                 return response
             })
             .then((response) => {
-                debugger;
                 console.log(response.data);
                 
                 //window.location.reload('http://localhost:3000/#/')
@@ -38,7 +44,7 @@ class ServiceAPI {
     }
     editAnimal = ( name, age, price, type, id) => {
         return axios.put('http://localhost:3012/animals/', {
-            id: id,
+            _id: id,
             nickname: name,
             price: price,
             age: age,
@@ -46,7 +52,6 @@ class ServiceAPI {
         })
     }
     getAnimal =(id) =>{
-        //debugger
         return axios.get(`http://localhost:3012/animals/${id}`, {
             mode: 'cors',
             method: 'GET',
