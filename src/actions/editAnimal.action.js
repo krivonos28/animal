@@ -10,6 +10,8 @@ class Actions {
     ADD_ANIMAL_FOR_EDIT_SUCCESS = "ADD_ANIMAL_FOR_EDIT_SUCCESS";
     ADD_CORRECTED_ANIMAL_REQUEST = "ADD_CORRECTED_ANIMAL_REQUEST"; 
     ADD_CORRECTED_ANIMAL_SUCCESS = "ADD_CORRECTED_ANIMAL_SUCCESS";
+    CHANGE_STATE_ANIMAL_FOREDIT_TRUE = "CHANGE_STATE_ANIMAL_FOREDIT_TRUE";
+    CHANGE_STATE_ANIMAL_FOREDIT_FALSE = "CHANGE_STATE_ANIMAL_FOREDIT_FALSE";
 
 
     editAnimalRedirectRequest = () =>({
@@ -45,31 +47,35 @@ class Actions {
     })
 
 
+
+
+    changeStateAnimalEditTrue = () => ({
+        type: this.CHANGE_STATE_ANIMAL_FOREDIT_TRUE
+    })
+    changeStateTrue = () => (dispatch) =>{
+        dispatch(this.changeStateAnimalEditTrue());
+    }
+
     addCorrectedAnimal =(e, name, age, price, type, _id) => async (dispatch)=> {
+        console.log(e, name, age, price, type, _id);
         e.preventDefault();
         dispatch(this.addCorrectedAnimalRequest());
         await ApiService.editAnimal(name, age, price, type, _id);
         dispatch(this.addCorrectedAnimalSuccess());
-        window.location.href = `http://localhost:3000/#/`;
-
+        //window.location.href = `#/`;
 }
 
-
-
-
-    editAnimal = (id) => (dispatch) => {
-        console.log(id);
+editAnimal = (id) => (dispatch) => {
         dispatch(this.editAnimalRedirectRequest());
-        window.location.href = `http://localhost:3000/#/edit/${id}`
+        window.location.href = `#/edit/${id}`
         dispatch(this.editAnimalRedirectSuccess());
         dispatch(this.addIdAnimalForEdit(id));
-        
     }
+ 
     addAnimalForEditInStore = (response) => (dispatch) =>{
-        console.log('hey');
     }
+ 
     getAnimal = (id) => async (dispatch) => {
-        console.log('get animal',id);
         dispatch(this.getAnimalRequest());//lounch spinner
         const response = await ApiService.getAnimal(id);
         dispatch(this.addAnimalForEdit(response[0]));

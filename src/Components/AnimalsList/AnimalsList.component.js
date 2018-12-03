@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { AnimalCardRow } from '../Components/AnimalCard'
 
 
 class AnimalCardComponent extends Component {
@@ -8,18 +9,8 @@ class AnimalCardComponent extends Component {
     render() {
         var animalCard = this.props.animalStore.animals.map((item, i, ) => {
             return (
-                <tr key={item._id}>
-                    <th key={item._id + "row"} scope="row">{i + 1}</th>
-                    <td key={item._id + "nickName"} className="nickName">{item.nickname ? item.nickname : "No name"}</td>
-                    <td key={item._id + "breed"} className="breed">{item.typesName.typeName}</td>
-                    <td key={item._id + "age"} className="age">{item.age}</td>
-                    <td key={item._id + "price"} className="price">{item.price}</td>
-                    <td key={item._id + "buttons"}>
-                        
-                        <button key={item._id + "button__delite"} data-id={item._id} onClick={this.props.onAddAnimalForDeleteInStore}>X</button>
-                        <button key={item._id + "button__edit"} data-id={item._id} onClick={this.props.onEditAnimal} >Edit</button>
-                    </td>
-                </tr>
+                <AnimalCardRow item = {item} i = {i}></AnimalCardRow>
+              
             )
         })
         return (
@@ -43,4 +34,4 @@ class AnimalCardComponent extends Component {
         )
     }
 }
-export const AnimalCard = AnimalCardComponent;
+export const AnimalList = AnimalCardComponent;

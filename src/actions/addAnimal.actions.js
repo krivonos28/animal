@@ -11,7 +11,7 @@ class Actions {
             
             ApiService.postAnimal(nickname, price, age, type)
               .then((response) => {
-                window.location.href = `http://localhost:3000/#/`
+                window.location.href = `#/`
                 })
             document.querySelector('#nickname').value = '';
             document.querySelector('#price').value = '';

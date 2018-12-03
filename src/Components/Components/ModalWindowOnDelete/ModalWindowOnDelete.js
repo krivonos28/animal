@@ -4,6 +4,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 export class ModalWindowOnDelete extends React.Component {
     render() {
+        console.log(this.props);
         return (
             <div>
                 <Modal isOpen={this.props.store.animalStore.animals.modalDel} toggle={this.props.store.onHideModalDelete} className={this.props.className}>

@@ -3,6 +3,7 @@ import axios from 'axios';
 class ServiceAPI {
 
     getAllAnimals = () => {
+        console.log("api get animals")
         return axios.get('http://localhost:3012/animals', {
             mode: 'cors',  //tried both with and without
             method: 'GET',

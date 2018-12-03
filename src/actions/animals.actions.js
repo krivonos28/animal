@@ -23,7 +23,7 @@ class Actions {
 
     getAnimalsSuccess = animals => ({
         type: this.GET_ANIMALS_SUCCESS,
-        animalsForAdd: animals
+        animalsForAdd: animals,
     })
     
     addAnimalsSaccess = (animals) =>({
@@ -31,7 +31,7 @@ class Actions {
         payload: animals
     })
 
-     loadAnimals = () =>  async (dispatch) => {
+    loadAnimals = () =>  async (dispatch) => {
         dispatch(this.getAnimalsRequest());
         const animals = await ApiService.getAllAnimals();
         dispatch(this.getAnimalsSuccess(animals));

@@ -18,7 +18,7 @@ export default function animals(state = initialState, action) {
         case "ADD_ANIMALS_SUCCESS":
         return {
                 ...state,
-                animals: [...action.payload]
+                animals: [...action.payload ]
             }
         case "ADD_ONE_ANIMAL":
             return {

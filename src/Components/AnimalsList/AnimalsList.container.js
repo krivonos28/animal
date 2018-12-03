@@ -1,7 +1,6 @@
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { AnimalCard } from './AnimalsList.component';
-//import { AnimalsActions } from '../../actions/animals.actions';
+import { AnimalList } from './AnimalsList.component';
 import { editAnimalAction } from '../../actions/editAnimal.action';
 import { deleteAnimal } from '../../actions/deleteAnimal'
 
@@ -22,6 +21,4 @@ const mapDispatchToProps = (dispatch) =>({
   
 });
 
-export const Animals = withRouter(
-    connect(mapStateToProps, mapDispatchToProps) (AnimalCard)
-);
+export const Animals = withRouter (connect(mapStateToProps, mapDispatchToProps) (AnimalList));
