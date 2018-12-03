@@ -50,7 +50,7 @@ class Actions {
         dispatch(this.addCorrectedAnimalRequest());
         await ApiService.editAnimal(name, age, price, type, _id);
         dispatch(this.addCorrectedAnimalSuccess());
-        window.location.href = `http://localhost:3000/#/`;
+        window.location.href = `#/`;
 
 }
 
