@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 class AddAnimalList extends Component {
-    render(){
+    render(){   
         return (
             <div>
         <Link to='/'>Home</Link> 

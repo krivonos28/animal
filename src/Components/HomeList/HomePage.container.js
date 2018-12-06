@@ -19,6 +19,9 @@ const mapDispatchToProps = dispatch => ({
     deleteAnimal: (id) => {
         dispatch(deleteAnimal.deleteAnimal(id));
     },
+    getTypes: () => {
+        dispatch()
+    }
    
 });
 

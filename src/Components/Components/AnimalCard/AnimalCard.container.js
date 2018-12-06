@@ -2,7 +2,8 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { AnimalCard } from './AnimalCard.component';
 import { editAnimalAction } from '../../../actions/editAnimal.action';
-import { deleteAnimal } from '../../../actions/deleteAnimal'
+import { deleteAnimal } from '../../../actions/deleteAnimal';
+import { AnimalsActions } from '../../../actions/animals.actions';
 
 
 const mapStateToProps = (state) => ({
@@ -24,8 +25,10 @@ const mapDispatchToProps = (dispatch) =>({
     onChangeStateFolse: () => {
         dispatch(editAnimalAction.changeStateFalse());
     },
-    onAddCorrectedAnimal: (e, name, age, price, type, id) => {dispatch(editAnimalAction.addCorrectedAnimal(e, name, age, price, type,id))
-},
+    onAddCorrectedAnimal: (e, name, age, price, type, id) => {
+        dispatch(editAnimalAction.addCorrectedAnimal(e, name, age, price, type,id));
+        dispatch(AnimalsActions.loadAnimals())
+    },
   
 });
 
