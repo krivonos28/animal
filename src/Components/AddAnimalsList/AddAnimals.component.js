@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 
 class AddAnimalList extends Component {
     render(){
+        let types = this.props.addAnimalStore.types;
+        let mapOption = types.map((type)=>{
+            return(<option key = {type._id} value = {type._id}>{type.typeName}</option>)
+        });
         return (
             <div>
         <Link to='/'>Home</Link> 
@@ -24,9 +28,10 @@ class AddAnimalList extends Component {
                     <div className="form-group col-m3">
                         <label htmlFor="input-type">Breed</label>
                         <select id="input-type" className="form-control">
-                            <option value="5bed209ecb2acfe0ac5bc720">tiger</option>
+                            {mapOption}
+                        {/* <option value="5bed209ecb2acfe0ac5bc720">tiger</option>
                             <option value="5bed209ecb2acfe0ac5bc722">panda</option>
-                            <option value="5bed1fbecb2acfe0ac5bc6cc">lion</option>
+                            <option value="5bed1fbecb2acfe0ac5bc6cc">lion</option> */}
                         </select>
                     </div>
                 </div>

@@ -5,16 +5,17 @@ const initialState = {
     animalForEdit: '',
     initialized: false,
     updating: false,
-    modalDel: false
+    modalDel: false,
+    types : []
 }
 
 export default function animals(state = initialState, action) {
     switch (action.type) {
-        case "UPDATE_ANIMALS": 
-        return {
-            ...state,   
-            updating: true,
-        }
+        // case "UPDATE_ANIMALS": 
+        // return {
+        //     ...state,   
+        //     updating: true,
+        // }
         case "ADD_ANIMALS_SUCCESS":
         return {
                 ...state,
@@ -25,7 +26,6 @@ export default function animals(state = initialState, action) {
                 ...state,
                 animals: [...state.animals, action.animal]
             }
-      
         case 'ADD_ANIMAL_FOR_EDIT':
             return {
                 ...state,
@@ -51,6 +51,11 @@ export default function animals(state = initialState, action) {
             ...state,
             modalDel: false
         }
+        case "GET_TYPES_SUCCESS":
+            return {
+                ...state,
+                types: action.payload
+            }
         default: return state;
     }
 }

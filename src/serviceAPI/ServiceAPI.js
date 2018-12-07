@@ -10,6 +10,7 @@ class ServiceAPI {
             cache: 'no-cache'
         })
             .then((response) => {
+                console.log("API service get animals", response)
                 return response.data;
             })
     }  

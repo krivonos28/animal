@@ -1,4 +1,5 @@
 import { ApiService } from '../serviceAPI/ServiceAPI';
+import { ApiServiceType} from '../serviceAPI/ServiceAPIType'
 
 class Actions {
     GET_ANIMALS_REQUEST = "GET_ANIMALS_REQUEST";
@@ -8,10 +9,13 @@ class Actions {
     UPDATE_ANIMALS_SUCCESS = "UPDATE_ANIMALS_SUCCESS";
     ADD_ANIMALS_SUCCESS = "ADD_ANIMALS_SUCCESS";
     DELETE_ANIMAL_SUCCESS ="DELETE_ANIMAL_SUCCESS";
-    SHOW_MODAL_DELETE_REQUEST = "SHOW_MODAL_DELETE_REQUEST" 
-    SHOW_MODAL_DELETE_SUCCESS = "SHOW_MODAL_DELETE_SUCCESS" 
-    HIDE_MODAL_DELETE_REQUEST = "HIDE_MODAL_DELETE_REQUEST"
-    HIDE_MODAL_DELETE_SUCCESS = "HIDE_MODAL_DELETE_SUCCESS"
+    GET_TYPES_REQUEST = "GET_TYPES_REQUEST";
+    GET_TYPES_SUCCESS = "GET_TYPES_SUCCESS";
+
+    // SHOW_MODAL_DELETE_REQUEST = "SHOW_MODAL_DELETE_REQUEST" 
+    // SHOW_MODAL_DELETE_SUCCESS = "SHOW_MODAL_DELETE_SUCCESS" 
+    // HIDE_MODAL_DELETE_REQUEST = "HIDE_MODAL_DELETE_REQUEST"
+    // HIDE_MODAL_DELETE_SUCCESS = "HIDE_MODAL_DELETE_SUCCESS"
 
     getAnimalsRequest = () => ({
         type: this.GET_ANIMALS_REQUEST,
@@ -36,6 +40,21 @@ class Actions {
         const animals = await ApiService.getAllAnimals();
         dispatch(this.getAnimalsSuccess(animals));
         dispatch(this.addAnimalsSaccess(animals));
+    }
+
+    getTypesRequest = () => ({
+        type: this.GET_TYPES_REQUEST
+    })
+    getTypesSuccess = (types) => ({
+        type: this.GET_TYPES_SUCCESS,
+        payload: types
+    })
+    getTypes = () => async (dispatch) => {
+        dispatch(this.getTypesRequest());
+        const types = await ApiServiceType.getTypes();
+        console.log('animals actions', types);
+        dispatch(this.getTypesSuccess(types));
+
     }
     }
            

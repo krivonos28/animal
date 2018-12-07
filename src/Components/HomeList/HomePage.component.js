@@ -10,8 +10,9 @@ class HomePageComponent extends Component {
 
     }
     componentWillMount() {
-        const { getAllAnimals } = this.props;
+        const { getAllAnimals, getTypes, } = this.props;
         getAllAnimals();
+        getTypes();
     }
 
     render() {
