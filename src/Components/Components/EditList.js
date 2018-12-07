@@ -62,7 +62,7 @@ class EditAnimal extends Component {
                             )
                             
                             
-                            }}>Submit</button>{}
+                            }}>Submit</button>
                     </form>
                 </div>
             </div>

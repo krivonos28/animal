@@ -1,6 +1,6 @@
-import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
 import { AnimalCard } from './AnimalsList.component';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 //import { AnimalsActions } from '../../actions/animals.actions';
 import { editAnimalAction } from '../../actions/editAnimal.action';
 import { deleteAnimal } from '../../actions/deleteAnimal'

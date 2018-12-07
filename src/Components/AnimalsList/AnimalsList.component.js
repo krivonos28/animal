@@ -15,7 +15,6 @@ class AnimalCardComponent extends Component {
                     <td key={item._id + "age"} className="age">{item.age}</td>
                     <td key={item._id + "price"} className="price">{item.price}</td>
                     <td key={item._id + "buttons"}>
-                        
                         <button key={item._id + "button__delite"} data-id={item._id} onClick={this.props.onAddAnimalForDeleteInStore}>X</button>
                         <button key={item._id + "button__edit"} data-id={item._id} onClick={this.props.onEditAnimal} >Edit</button>
                     </td>
