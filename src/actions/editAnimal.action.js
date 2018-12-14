@@ -1,4 +1,5 @@
-import { ApiService } from '../serviceAPI/ServiceAPI'
+import { ApiService } from '../serviceAPI/ServiceAPI';
+import { SpinnerAction } from '../actions/spinner.actions'
 class Actions {
     EDIT_ANIMAL_REDIRECT_REQUEST = "EDIT_ANIMAL_REDIRECT_REQUEST";
     EDIT_ANIMAL_REDIRECT_SUCCESS = "EDIT_ANIMAL_REDIRECT_SUCCESS";
@@ -47,33 +48,36 @@ class Actions {
 
     addCorrectedAnimal =(e, name, age, price, type, _id) => async (dispatch)=> {
         e.preventDefault();
+        console.log('add corrected animal edt animal')
+        debugger
         dispatch(this.addCorrectedAnimalRequest());
         await ApiService.editAnimal(name, age, price, type, _id);
         dispatch(this.addCorrectedAnimalSuccess());
-        window.location.href = `#/`;
+        
+    }
+    getAnimal = (id) => async (dispatch) => {
+        dispatch(SpinnerAction.showSpinner());
+        console.log('get animal',id);
+        dispatch(this.getAnimalRequest());//lounch spinner
+        const response = await ApiService.getAnimal(id);
+        console.log('edit animal action', response[0])
+        dispatch(this.addAnimalForEdit(response[0]));
+        dispatch(this.getAnimalSuccess());//stop spinner
+        dispatch(SpinnerAction.hideSpinner());
 
-}
-
-
-
-
-    editAnimal = (id) => (dispatch) => {
+    }
+    editAnimal = (id) => async (dispatch) => {
         console.log(id);
         dispatch(this.editAnimalRedirectRequest());
-        window.location.href = `http://localhost:3000/#/edit/${id}`
         dispatch(this.editAnimalRedirectSuccess());
-        dispatch(this.addIdAnimalForEdit(id));
+        await dispatch(this.addIdAnimalForEdit(id));
+        console.log('edit animal')
+        dispatch(this.getAnimal(id));
+        //window.location.href = `#/edit/${id}`
         
     }
     addAnimalForEditInStore = (response) => (dispatch) =>{
         console.log('hey');
-    }
-    getAnimal = (id) => async (dispatch) => {
-        console.log('get animal',id);
-        dispatch(this.getAnimalRequest());//lounch spinner
-        const response = await ApiService.getAnimal(id);
-        dispatch(this.addAnimalForEdit(response[0]));
-        dispatch(this.getAnimalSuccess());//stop spinner
     }
 
 }

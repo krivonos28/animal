@@ -20,6 +20,6 @@ const mapDispatchToProps = (dispatch) => ({
     
 })
 
-export const Join = withRouter(
+export const LoginPage = withRouter(
     connect(mapStateToProps, mapDispatchToProps)(JoinPage)
 );

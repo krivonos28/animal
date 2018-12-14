@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
-import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col, Label,Form, FormGroup, Input } from 'reactstrap';
+import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, Row, Col, Label, Form, FormGroup, Input } from 'reactstrap';
 import classnames from 'classnames';
 import './css/index.css'
 
@@ -21,18 +22,20 @@ class JoinPageComponent extends Component {
                 </NavLink>
                     </NavItem>
                     <NavItem>
-                        <NavLink
-                            className={classnames({ active: this.props.animalStore.join.signInUp === 'signUp' })}
-                            onClick={this.props.onTurnonSignUp}
-                        >
-                            Sign Up
-                </NavLink>
+                        
+                            <NavLink
+                                className={classnames({ active: this.props.animalStore.join.signInUp === 'signUp' })}
+                                onClick={this.props.onTurnonSignUp}
+                            >
+                                Sign Up
+                     </NavLink>
+                        
                     </NavItem>
                 </Nav>
                 <TabContent activeTab={this.props.animalStore.join.signInUp}>
                     <TabPane tabId="signIn">
                         <div> <Row>
-                            <Button onClick={this.props.onJoin}>Sign In</Button>
+                        <Link to="/animals"><Button onClick={this.props.onJoin}>Sign In</Button></Link>
                         </Row></div>
                     </TabPane>
                     <TabPane tabId="signUp">
@@ -52,7 +55,6 @@ class JoinPageComponent extends Component {
                                     <Button></Button>
                                 </Card>
                             </Col>
-
                         </Row>
                         </div>
                     </TabPane>

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
 
 
 class AnimalCardComponent extends Component {
@@ -6,8 +8,10 @@ class AnimalCardComponent extends Component {
         super()
     }
     render() {
+       
         var animalCard = this.props.animalStore.animals.map((item, i, ) => {
             return (
+                
                 <tr key={item._id}>
                     <th key={item._id + "row"} scope="row">{i + 1}</th>
                     <td key={item._id + "nickName"} className="nickName">{item.nickname ? item.nickname : "No name"}</td>
@@ -15,10 +19,11 @@ class AnimalCardComponent extends Component {
                     <td key={item._id + "age"} className="age">{item.age}</td>
                     <td key={item._id + "price"} className="price">{item.price}</td>
                     <td key={item._id + "buttons"}>
-                        <button key={item._id + "button__delite"} data-id={item._id} onClick={this.props.onAddAnimalForDeleteInStore}>X</button>
-                        <button key={item._id + "button__edit"} data-id={item._id} onClick={this.props.onEditAnimal} >Edit</button>
+                        <Link to = "/animals/"><button key={item._id + "button__delite"} data-id={item._id} onClick={this.props.onAddAnimalForDeleteInStore}>X</button></Link>
+                        <Link to={{pathname: `/animals/${item._id}/edit`}}><button key={item._id + "button__edit"} data-id={item._id} onClick={this.props.onEditAnimal} >Edit</button></Link>
                     </td>
                 </tr>
+            
             )
         })
         return (

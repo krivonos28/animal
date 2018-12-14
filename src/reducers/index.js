@@ -3,10 +3,12 @@ import animals from './animals.reducer';
 import join from './join.reducer';
 import editAnimal from './editAnimal.reducer';
 import deleteAnimal from './deleteanimal.reducer'
+import launchSpinner from './spiner.reducer'
 
 export default combineReducers({
    animals,
    join,
    editAnimal,
-   deleteAnimal
+   deleteAnimal,
+   launchSpinner
   })

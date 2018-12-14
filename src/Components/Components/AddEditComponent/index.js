@@ -1,0 +1,1 @@
+export { AddEditAnimalCardComponent } from './AddEdit.container';

@@ -1,1 +1,0 @@
-export { Join } from './JoinPage.container';

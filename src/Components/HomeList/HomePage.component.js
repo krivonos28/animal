@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Animals } from '../AnimalsList'
-import { Join } from '../JoinList'
-import { Link } from 'react-router-dom'
-import { ModalWindowOnDelete } from '../Components/ModalWindowOnDelete/ModalWindowOnDelete'
+import { Animals } from '../AnimalsList';
+import { LoginPage } from '../Joinpage';
+import { Link } from 'react-router-dom';
+import { ModalWindowOnDelete } from '../Components/ModalWindowOnDelete/ModalWindowOnDelete';
+import Spinner from '../Components/spinner/spinner';
 
 class HomePageComponent extends Component {
     constructor(props) {
@@ -19,13 +20,14 @@ class HomePageComponent extends Component {
         //const { getAllAnimals } = this.props.animalStore.animals;
         if (!this.props.animalStore.join.signIn) {
             return (<div>
-                <Join></Join>
+                <LoginPage></LoginPage>
             </div>)
         }
         const { modalDel } = this.props.animalStore.animals;
         const modalDelete = modalDel ? <ModalWindowOnDelete store = {this.props} /> : null
         return (
             <div>
+                <Spinner></Spinner>
                 {modalDelete}
                 <div className="container">
                     <div className="row">
@@ -38,7 +40,7 @@ class HomePageComponent extends Component {
                     <div className="row addAnimal justify-content-end">
                         
                       
-                        <Link to="add">
+                        <Link to='/animals/add'>
                             <div className="col-2">
                               <button type="button" className="btn btn-outline-success" >Add</button>
                             </div>

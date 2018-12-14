@@ -11,11 +11,6 @@ const initialState = {
 
 export default function animals(state = initialState, action) {
     switch (action.type) {
-        // case "UPDATE_ANIMALS": 
-        // return {
-        //     ...state,   
-        //     updating: true,
-        // }
         case "ADD_ANIMALS_SUCCESS":
         return {
                 ...state,
