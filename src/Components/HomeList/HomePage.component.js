@@ -4,6 +4,7 @@ import { LoginPage } from '../Joinpage';
 import { Link } from 'react-router-dom';
 import { ModalWindowOnDelete } from '../Components/ModalWindowOnDelete/ModalWindowOnDelete';
 import Spinner from '../Components/spinner/spinner';
+import { MainMenu } from '../Components/MainMenu'
 
 class HomePageComponent extends Component {
     constructor(props) {
@@ -27,6 +28,7 @@ class HomePageComponent extends Component {
         const modalDelete = modalDel ? <ModalWindowOnDelete store = {this.props} /> : null
         return (
             <div>
+                <MainMenu></MainMenu>
                 <Spinner></Spinner>
                 {modalDelete}
                 <div className="container">

@@ -66,7 +66,7 @@ class AddEditAnimalList extends Component {
                             <div className="form-group col-3">
                                 <label htmlFor="nickname">Nickname</label>
                                 <input type="text" className="form-control" id="nickname" name="nickName" placeholder="Nickname"
-                                    defaultValue={typeOperation ? this.state.nickname : editAnimal.nickName}
+                                    defaultValue={editAnimal.nickName || '' }
                                     //value={this.state.nickname} 
                                     onChange ={this.handelFormChange}>
                                 </input>
@@ -74,7 +74,7 @@ class AddEditAnimalList extends Component {
                             <div className="form-group col-3">
                                 <label htmlFor="age">Age</label>
                                 <input type="number" className="form-control" id="age" name="age" placeholder="Age"
-                                    defaultValue={typeOperation ? this.state.age : editAnimal.age}
+                                    defaultValue={editAnimal.age || ''}
                                     //value={this.state.age}
                                     onChange ={this.handelFormChange}>
                                 </input>
@@ -82,14 +82,14 @@ class AddEditAnimalList extends Component {
                             <div className="form-group col-3">
                                 <label htmlFor="price">Price</label>
                                 <input type="number" className="form-control" id="price" name="price" placeholder="Price"
-                                    defaultValue={typeOperation ? this.state.price : editAnimal.price}
+                                    defaultValue={editAnimal.price || ''}
                                     //value={this.state.price}
                                     onChange ={this.handelFormChange}></input>
                             </div>
                             <div className="form-group col-m3">
                                 <label htmlFor="input-type">Breed</label>
                                 <select id="input-type" className="form-control" name="type"
-                                    defaultValue={typeOperation ? this.state.type : editAnimal.type}
+                                    defaultValue={editAnimal.type || ''}
                                     //value={this.state.type}
                                     onChange ={this.handelFormChange}>
                                     <option  value={''}>{'not chosen'}</option>
@@ -106,7 +106,7 @@ class AddEditAnimalList extends Component {
                                 id    )    
                         }} className="btn btn-primary">Submit</button></Link>
                     </form> 
-                </div>
+                </div >
             </div>
         )
     }

@@ -57,7 +57,7 @@ class Actions {
     }
     getAnimal = (id) => async (dispatch) => {
         dispatch(SpinnerAction.showSpinner());
-        console.log('get animal',id);
+        console.log('get animal', id);
         dispatch(this.getAnimalRequest());//lounch spinner
         const response = await ApiService.getAnimal(id);
         console.log('edit animal action', response[0])

@@ -1,0 +1,1 @@
+export { TestPageComponent } from './/TestPage.container';

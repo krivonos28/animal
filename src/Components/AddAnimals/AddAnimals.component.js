@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { AddEditAnimalCardComponent} from '../Components/AddEditComponent/AddEdit.component';
+import { AddEditAnimalCardComponent} from '../Components/AddEditComponent';
 
 class AddAnimalList extends Component {
     constructor(props){

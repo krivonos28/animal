@@ -8,26 +8,25 @@ import { AddEditAnimalCardComponent} from '../Components/AddEditComponent';
 class EditAnimalList extends Component {
     constructor(props){
         super()
-       this.id =  window.location.pathname.replace('/animals/','').replace('/edit','');
+        this.id =  '';
         
     }
     componentWillMount = () =>{
-
+        this.id = this.props.location.pathname.replace('/animals/','').replace('/edit','')
+        console.log("EiditPage componentWillMount ", this.id)
       
     }
     
     componentDidMount = async() => {
        
         //id =  id.replace('/edit', '');
-        console.log("edit page", window.location.pathname);
-        console.log("edit pagge", this.id)
+        
+        console.log("edit pagge", this.props)
         await this.props.onGetTypes();
         this.props.getOneAnimal(this.id);
 
     }
     render() {
-        console.log(window.location.hash)
-        console.log('edit list component props', this.props)
         const spinnerLounch = this.props.animalStore.launchSpinner.spinner
         console.log('spinner', this.props.animalStore.launchSpinner)
         const element = <div><Link to='/animals/'>Home</Link>
